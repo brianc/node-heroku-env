@@ -9,6 +9,7 @@
   },
   "author": "",
   "license": "BSD",
+  "repository": "git://github.com/brianc/node-heroku-env",
   "dependencies": {
     "parse-database-url": "~0.2.0"
   }
