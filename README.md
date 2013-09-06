@@ -18,16 +18,16 @@ Stop wasting time running `heroku config` and hand-parsing the database url to p
 
 ## use
 
-_assume my normal workflow is `heroku -app brianc-node-postgres`_
+_assume my normal workflow is `heroku -app brianc-node-postgres <some heroku-toolbelt command>`_
 
-Easily create a `.env` file to use with `foreman`
+1. Easily create a project `.env` file to use with `foreman` based on your heroku app settings
 
 ```bash
 $: heroku-env brianc-node-postgres > .env
 $: foreman start
 ```
 
-Bring in your entire heroku configuration for an app into your local environment.
+2. Bring in your entire heroku configuration for an app into your local environment.
 
 ```bash
 $: export `heroku-env brianc-node-postgres`
