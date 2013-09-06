@@ -1,9 +1,10 @@
 heroku-env
 ===============
 
-Do you know how much time I've wasted running `heroku config` and then copy/pasting the `DATABASE_URL` setting out, hand-parsing it, and using the values via psql or pg_dump?  Way more time than it took to write this, unfortunately.
+Stop wasting time running `heroku config` and hand-parsing the database url to pass to `pg_dump` or `psql` or `node .`
 
-### install
+
+## install
 
 `npm install --global heroku-env`
 
@@ -12,6 +13,29 @@ Do you know how much time I've wasted running `heroku config` and then copy/past
 1. You must have [the heroku toolbelt](https://toolbelt.heroku.com/) installed
 2. You must be logged in to the heroku toolbelt
 3. The heroku toolbelt must be in your `$PATH`
+ 
+
+
+## use
+
+_assume my normal workflow is `heroku -app brianc-node-postgres`_
+
+Easily create a `.env` file to use with `foreman`
+
+```bash
+$: heroku-env brianc-node-postgres > .env
+$: foreman start
+```
+
+Bring in your entire heroku configuration for an app into your local environment.
+
+```bash
+$: export `heroku-env brianc-node-postgres`
+$: psql #automatically connects to heroku
+$: pg_dump #automatically connects to heroku
+$: pg_restore #....I think you get the picture
+$: node my-awesome-website.js #if you're using node-postgres you're good to go
+```
 
 ### usage
 
@@ -30,24 +54,7 @@ PGSSLMODE=require
 
 heroku-env will parse the first database url it finds and create standard [postgres environment variables](http://www.postgresql.org/docs/9.2/static/libpq-envars.html) out of them.  This might seem lame, but check out the use cases.
 
-### use cases
 
-Easily create a `.env` file to use with `foreman`
-
-```bash
-$: heroku-env brianc-node-postgres > .env
-$: foreman start
-```
-
-Bring in your entire heroku configuration for an app into your local environment.
-
-```bash
-$: export `heroku-env brianc-node-postgres`
-$: psql #automatically connects to heroku
-$: pg_dump #automatically connects to heroku
-$: pg_restore #....I think you get the picture
-$: node my-awesome-website.js #if you're using node-postgres you're good to go
-```
 
 ### api
 
