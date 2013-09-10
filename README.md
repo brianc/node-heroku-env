@@ -3,6 +3,8 @@ heroku-env
 
 Stop wasting time running `heroku config` and hand-parsing the database url to pass to `pg_dump` or `psql` or `node .`
 
+`heroku-env` will parse the `DATABASE_URL` from your heroku config and split it out into the `PG*` environment variables used by `psql` `pg_dump` `pg_restore` and `node_postgres`
+
 
 ## install
 
